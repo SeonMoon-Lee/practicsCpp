@@ -16,28 +16,23 @@ class QueueToStack
 	}
 	T Pop()
 	{
-		if (isEmpty())
+		if (IsEmpty())
 			return 0;
-
-		T data = inQueue.back();
-		outQueue.push(data);
-
-		data = outQueue.front();
-		outQueue.pop();
-
 		while (inQueue.size() > 1)
 		{
 			T temp = inQueue.front();
 			inQueue.pop();
 			outQueue.push(temp);
 		}
+
+		T data = inQueue.front();
 		inQueue.pop();
 		while (!outQueue.empty())
 		{
 			T temp = outQueue.front();
 			outQueue.pop();
 			inQueue.push(temp);
-		}
+		}		
 		return data;
 	}
 	bool IsEmpty()
