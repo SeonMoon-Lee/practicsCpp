@@ -10,11 +10,11 @@ class QueueToStack
 	queue<T> outQueue;
 	public:
 
-	void Enqueue(T data)
+	void Push(T data)
 	{
 		inQueue.push(data);
 	}
-	T DeQueue()
+	T Pop()
 	{
 		if (isEmpty())
 			return 0;
@@ -32,7 +32,7 @@ class QueueToStack
 			outQueue.push(temp);
 		}
 		inQueue.pop();
-		while (outQueue.size() > 0)
+		while (!outQueue.empty())
 		{
 			T temp = outQueue.front();
 			outQueue.pop();
@@ -40,29 +40,29 @@ class QueueToStack
 		}
 		return data;
 	}
-	bool isEmpty()
+	bool IsEmpty()
 	{
-		return inQueue.size() == 0 && outQueue.size() == 0;
+		return inQueue.empty()&& outQueue.empty();
 	}
 };
 int main()
 {
 	QueueToStack<int> test1;
 
-	test1.Enqueue(1);
-	test1.Enqueue(2);
-	test1.Enqueue(3);
-	test1.Enqueue(4);
+	test1.Push(1);
+	test1.Push(2);
+	test1.Push(3);
+	test1.Push(4);
 
-	cout << test1.DeQueue() << endl;
-	cout << test1.DeQueue() << endl;
-	cout << test1.DeQueue() << endl;
+	cout << test1.Pop() << endl;
+	cout << test1.Pop() << endl;
+	cout << test1.Pop() << endl;
 
-	test1.Enqueue(5);
-	test1.Enqueue(6);
+	test1.Push(5);
+	test1.Push(6);
 
-	cout << test1.DeQueue() << endl;
-	cout << test1.DeQueue() << endl;
+	cout << test1.Pop() << endl;
+	cout << test1.Pop() << endl;
 
 	return 0;
 }
